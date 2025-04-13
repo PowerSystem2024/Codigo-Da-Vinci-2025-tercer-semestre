@@ -1,0 +1,23 @@
+# Ignorar directorios de dependencias
+node_modules/
+.vscode/
+.idea/
+__pycache__/
+
+# Archivos de configuración y temporales del sistema
+.DS_Store            # MacOS
+Thumbs.db            # Windows
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar logs
+*.log
+
+# Ignorar archivos comprimidos
+*.zip
+*.tar.gz
+
+
+# Ignorar otros archivos temporales comunes
+*.swp
