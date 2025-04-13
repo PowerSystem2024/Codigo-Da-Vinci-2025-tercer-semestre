@@ -2,6 +2,8 @@
 
 Este repositorio contiene los proyectos y las tareas de la tecnicatura en programación.  
 ![Leonardo programando](./assets/codigoDavinci.png)
+![Texto alternativo](assets/codigoDavinci.png)
+
 
 **Integrantes del grupo :**  
 - **Machuca, Carmen Irene (legajo : 11135)**  
