@@ -1,10 +1,12 @@
 # Proyecto Código Da Vinci 2025 - Tercer Semestre
 
 Este repositorio contiene los proyectos y las tareas de la tecnicatura en programación.  
+![Leonardo programando](./assets/codigoDavinci.png)
+
 **Integrantes del grupo :**  
 - **Machuca, Carmen Irene (legajo : 11135)**  
   [GitHub - Irene-Machuca ](https://github.com/mirenecarmen)
-  [![Irene Machuca - Código Da Vinci](https://img.shields.io/badge/Código%20Da%20Vinci-Irene%20Machuca-blueviolet?logo=github)](https://github.com/irenemachuca)
+  [![Irene Machuca - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Irene%20Machuca-blueviolet?logo=github)](https://github.com/irenemachuca)
 
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )** 
