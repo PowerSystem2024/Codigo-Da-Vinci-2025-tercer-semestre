@@ -11,7 +11,7 @@ Este repositorio contiene los proyectos y las tareas de la tecnicatura en progra
   [![Irene Machuca - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Irene%20Machuca-blueviolet?logo=github)](https://github.com/irenemachuca)
 
 - **Torres, Santiago  (legajo : 11263)
-  [GitHub - Irene-Machuca ](https://github.com/Serrix06)
+  [GitHub - Santiago-Torres ](https://github.com/Serrix06)
 - ** x , x (legajo : x )** 
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
