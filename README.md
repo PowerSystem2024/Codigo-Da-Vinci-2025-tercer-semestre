@@ -11,7 +11,10 @@ Integrantes del grupo :**
 - **Torres, Santiago (legajo : 11263)**  
   [GitHub - Santiago-Torres ](https://github.com/Serrix06)  
   [![Santiago Torres - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Santiago%20Torres-blueyellow?logo=github)](https://github.com/Serrix06)
-- ** x , x (legajo : x )**
+  
+-  **Felipe, Valentin (legajo : 11291)**  
+  [GitHub - Valentin-Felipe ](https://github.com/Valentin-Felipe)  
+  [![Valentin Felipe - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Valentin%20Felipe-blueyellow?logo=github)](https://github.com/Valentin-Felipe) 
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
