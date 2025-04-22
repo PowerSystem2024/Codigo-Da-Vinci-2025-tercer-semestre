@@ -3,16 +3,18 @@
 Este repositorio contiene los proyectos y las tareas de la tecnicatura en programación.  
 ![Leonardo programando](./assets/codigoDavinci.png)
 
-
-
-**Integrantes del grupo :**  
+Integrantes del grupo :**  
 - **Machuca, Carmen Irene (legajo : 11135)**  
-  [GitHub - Irene-Machuca ](https://github.com/mirenecarmen)
-  [![Irene Machuca - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Irene%20Machuca-blueviolet?logo=github)](https://github.com/irenemachuca)
+  [GitHub - Irene-Machuca ](https://github.com/mirenecarmen)  
+  [![Irene Machuca - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Irene%20Machuca-blueyellow?logo=github)](https://github.com/irenemachuca)
 
-- **Torres, Santiago  (legajo : 11263)
-  [GitHub - Santiago-Torres ](https://github.com/Serrix06)
-- ** x , x (legajo : x )** 
+- **Torres, Santiago (legajo : 11263)**  
+  [GitHub - Santiago-Torres ](https://github.com/Serrix06)  
+  [![Santiago Torres - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Santiago%20Torres-blueyellow?logo=github)](https://github.com/Serrix06)
+  
+-  **Felipe, Valentin (legajo : 11291)**  
+  [GitHub - Valentin- Felipe ](https://github.com/Valentin-Felipe)  
+  [![Valentin Felipe - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Valentin%20Felipe-blueyellow?logo=github)](https://github.com/Valentin-Felipe) 
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**

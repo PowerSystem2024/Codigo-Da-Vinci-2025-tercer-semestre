@@ -21,3 +21,7 @@ Thumbs.db            # Windows
 
 # Ignorar otros archivos temporales comunes
 *.swp
+
+# Ignorar entorno virtual de Python
+venv/
+**/venv/
