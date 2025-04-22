@@ -16,7 +16,7 @@ Integrantes del grupo :**
   [GitHub - Valentin- Felipe ](https://github.com/Valentin-Felipe)  
   [![Valentin Felipe - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Valentin%20Felipe-blueyellow?logo=github)](https://github.com/Valentin-Felipe)
 
-- **Pardo, David Adrian (legajo : 10461)**
+- **Pardo, David Adrian (legajo : 10461)**   
   [GitHub - Pardo- David ](https://github.com/David-Pardo93)  
   [![Valentin Felipe - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Pardo%20David-blueyellow?logo=github)](https://github.com/David-Pardo93)
 - ** x , x (legajo : x )**
