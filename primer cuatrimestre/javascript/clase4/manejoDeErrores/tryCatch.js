@@ -6,6 +6,7 @@ try{
 }
 catch(error){ // catchamos el error
     console.log(error);
+    console.log(error);
 }
 finally{
     console.log('termina la revision de errores');
