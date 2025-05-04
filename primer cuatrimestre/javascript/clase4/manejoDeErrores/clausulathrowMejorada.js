@@ -31,6 +31,7 @@ for (let i = 0; i < valoresDePrueba.length; i++) {
     try {
         if (isNaN(resultado)) throw new Error('No es un número');
         else if (resultado === '') throw new Error('Es cadena vacía');
+        else if (resultado === '') throw new Error('Es cadena vacía');
         else if (resultado >= 0) throw new Error('Valor positivo');
         else if (resultado <= 0) throw new Error('Valor negativo');
     } catch (error) {
