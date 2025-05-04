@@ -1,0 +1,30 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>50</x><y>50</y><w>260</w><h>220</h></coordinates><panel_attributes>Dominio 
+--
+&lt;&lt;Pelicula&gt;&gt;
+--
+- nombre:str
+--
+_+__str__()
+--
+Responsibilities
+-- Representa un objeto pelicula</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>370</x><y>30</y><w>260</w><h>220</h></coordinates><panel_attributes>servicio
+--
+&lt;&lt;Catalogo Pelicula&gt;&gt;
+--
++ ruta_archivo : str &lt;&lt;static&gt;&gt;
+--
++ agregar_pelicula(Pelicula) &lt;&lt;static&gt;&gt;
++ listar_peliculas() &lt;&lt;static&gt;&gt;
++ eliminar() &lt;&lt;static&gt;&gt;
+--
+Responsibilities
+-- Realizar las operaciones sobre el archivo de peliculas .txt</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>360</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Test_catalogo_peliculas.py&gt;&gt;
+
+--
+Responsibilities
+-- Contiene un menu de 4 opciones
+1- agregar pelicula
+2-listar pelicula
+3-eliminar archivo de peliculas
+4-salir
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>140</y><w>130</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element></diagram>
