@@ -2,7 +2,7 @@
 
 // Primer bloque try-catch-finally
 try {
-    let x = 10;
+    let x = 52;
     mifuncion(); // Esta función no está definida, lanza error
 
     /* function mifuncion() {
