@@ -20,7 +20,10 @@ Integrantes del grupo :**
   [GitHub - Pardo- David ](https://github.com/David.Pardo93)  
   [![Pardo David - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Pardo%20David-blueyellow?logo=github)](https://github.com/David.Pardo93) 
 
-- ** x , x (legajo : x )**
+- **Milagros, Cañete (legajo : 11022 )**
+  [GitHub - Mili-Canete ](https://github.com/Mili-Canete)  
+  [![Milagros Cañete - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Mili%20Canete-blueyellow?logo=github)](https://github.com/Mili-Canete)
+   
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
 - ** x , x (legajo : x )**
