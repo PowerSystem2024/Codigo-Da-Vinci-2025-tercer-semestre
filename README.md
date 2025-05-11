@@ -21,7 +21,7 @@ Este repositorio contiene los proyectos y las tareas de la tecnicatura en progra
   [GitHub - Pardo- David ](https://github.com/David.Pardo93)  
   [![Pardo David - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Pardo%20David-blueyellow?logo=github)](https://github.com/David.Pardo93) 
 
-  **Milagros, Cañete (legajo : 11022 )**
+  **Milagros, Cañete (legajo : 11022)**
   [GitHub - Mili- Canete ](https://github.com/Mili-Canete)  
   [![Milagros Cañete - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Mili%20Canete-blueyellow?logo=github)](https://github.com/Mili-Canete)
    
