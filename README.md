@@ -24,6 +24,11 @@ Este repositorio contiene los proyectos y las tareas de la tecnicatura en progra
   **Milagros, Cañete (legajo : 11022)**
   [GitHub - Mili- Canete ](https://github.com/Mili-Canete)  
   [![Milagros Cañete - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Mili%20Canete-blueyellow?logo=github)](https://github.com/Mili-Canete)
+  
+  **Reynoso, Lucas (legajo : xxxxx)**  
+  [GitHub - Reynoso- Lucas ](https://github.com/LucasReynoso4)
+
+  [![Reynoso Lucas - Código Da Vinci](https://img.shields.io/badge/Código%20Da%20Vinci-Lucas%20Reynoso-blueyellow?logo=github)](https://github.com/LucasReynoso4)
    
 
 
