@@ -1,0 +1,34 @@
+1. Analizar la siguiente formula para obtener un número aleatorio en un rango del 1 al 3 y elige cuál es correcta:
+a. Math.random()
+b. Math.floor(Math.random)
+c. function aleatorio(min, max){
+         return Math.floor(Math.random())
+}
+d.
+let max = 3
+let min = 1
+function aleatorio(min, max){
+        return Math.floor( Math.random() * (max - min +1) + min)
+}
+e. Ninguna de las respuestas
+
+LA RESPUESTA ES D
+
+2. Cuál es un código que se pueda utilizar para un botón Reiniciar en html:
+a. <a href="JavaScript:document.location.reload();">Reiniciar</a>
+b. <script>boton>/script>
+c. <button onclick="document.location.reload();">
+                 reset
+d. <input type="button" value="Reiniciar" onclick="ducment.location.reload">
+e. Todas las respuestas
+
+LA RESPUESTA ES A
+
+3. Elige cuál es el uso correcto del utf-8 en html:
+a. Acepta todo tipo de comillas simples.
+b. Acepta tildes
+c. Acepta acentos
+d. Acepta caracteres especiales
+e. Todas las respuestas
+
+LA RESPUESTA ES E
