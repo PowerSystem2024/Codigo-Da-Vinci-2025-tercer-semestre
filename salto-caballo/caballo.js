@@ -13,8 +13,7 @@ class KnightTour {
         return x >= 0 && y >= 0 && x < this.size && y < this.size && this.board[x][y] === -1;
     }
 
-    solve() {
-       
+    solve() { 
         this.board[0][0] = 0;
         
         if (!this.solveUtil(0, 0, 1)) {
@@ -42,8 +41,7 @@ class KnightTour {
                 if (this.solveUtil(nextX, nextY, moveCount + 1)) {
                     return true;
                 }
-                
-              
+                 
                 this.board[nextX][nextY] = -1;
             }
         }
