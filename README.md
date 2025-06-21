@@ -47,3 +47,4 @@ El proyecto integrador consiste en desarrollar una aplicación en Python que uti
 
 ![Proyecto Integrador](./assets/proyectoIntegrador.png)
 # Test contribución Sat Jun 21 03:34:01 AM -03 2025
+Test contribución con correo correcto Sat Jun 21 03:42:26 AM -03 2025
