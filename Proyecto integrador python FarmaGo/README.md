@@ -1,10 +1,4 @@
 
-# Proyecto Integrador - Python
-
-## Imagen de la consigna
-
-![Proyecto Integrador](./assets/proyectoIntegrador.png)
-=======
 # 🧪 Proyecto Integrador Python: FarmaGo
 
 Nuestra startup es una red de cadenas de farmacias que integra una plataforma digital compuesta por una página web y una aplicación móvil. A través de estos canales, los clientes pueden solicitar medicamentos y productos farmacéuticos. 
@@ -20,11 +14,11 @@ Además, se incorporan tecnologías de inteligencia artificial para optimizar la
 
 ## 🖼️ Mockup de la App
 
-![Mockup](img/JiraFarmaGo.png)
+![Mockup](img/mockupFarmaGo.png)
 
 ## 📋 Sprint actual en Jira
 
-![Sprint en Jira](img/mockupFarmaGo.png)
+![Sprint en Jira](img/JiraFarmaGo.png)
 
 ## 📄 Documentación del Proyecto
 
