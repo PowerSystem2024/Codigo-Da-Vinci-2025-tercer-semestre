@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - Farmacia</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .producto-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .producto-imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .producto-imagen img {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 4px;
+        }
+        .producto-info h1 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .precio {
+            font-size: 24px;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .stock {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .stock.agotado {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .btn-carrito {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .btn-carrito:hover {
+            background: #2980b9;
+        }
+        .btn-carrito:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        .mensaje {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .mensaje.exito {
+            background: #d4edda;
+            color: #155724;
+        }
+        .mensaje.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="producto-header">
+            <h1>Farmacia Online</h1>
+            <a href="#" id="carrito-link">🛒 Carrito</a>
+        </div>
+
+        <div class="producto-imagen">
+            <img id="producto-imagen" src="https://via.placeholder.com/300?text=Imagen+Producto" alt="Imagen del producto">
+        </div>
+
+        <div class="producto-info">
+            <h1 id="producto-nombre">Cargando producto...</h1>
+            <p id="producto-descripcion" class="descripcion"></p>
+            
+            <div class="precio">$<span id="producto-precio">--</span></div>
+            <div id="producto-stock" class="stock">Stock: --</div>
+            
+            <div class="controles">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" min="1" value="1" style="padding: 8px; width: 60px;">
+                
+                <button id="btn-carrito" class="btn-carrito">
+                    🛒 Agregar al carrito
+                </button>
+                <div id="mensaje" class="mensaje"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener ID del producto de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productoId = urlParams.get('id') || 1;
+
+        // Elementos del DOM
+        const nombreElement = document.getElementById('producto-nombre');
+        const descripcionElement = document.getElementById('producto-descripcion');
+        const precioElement = document.getElementById('producto-precio');
+        const stockElement = document.getElementById('producto-stock');
+        const imagenElement = document.getElementById('producto-imagen');
+        const btnCarrito = document.getElementById('btn-carrito');
+        const mensajeElement = document.getElementById('mensaje');
+        const cantidadInput = document.getElementById('cantidad');
+
+        // Cargar datos del producto
+        async function cargarProducto() {
+            try {
+                const response = await fetch(`http://localhost:8000/producto/${productoId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Producto no encontrado');
+                }
+                
+                const producto = await response.json();
+                
+                // Mostrar datos en la página
+                nombreElement.textContent = producto.nombre;
+                descripcionElement.textContent = producto.descripcion;
+                precioElement.textContent = producto.precio.toFixed(2);
+                stockElement.textContent = `Stock: ${producto.stock} unidades`;
+                
+                if (producto.imagen_url) {
+                    imagenElement.src = producto.imagen_url;
+                }
+                
+                // Configurar cantidad máxima
+                cantidadInput.max = producto.stock;
+                
+                // Deshabilitar botón si no hay stock
+                if (producto.stock <= 0) {
+                    stockElement.classList.add('agotado');
+                    btnCarrito.disabled = true;
+                    cantidadInput.disabled = true;
+                }
+                
+            } catch (error) {
+                mensajeElement.textContent = `Error: ${error.message}`;
+                mensajeElement.className = 'mensaje error';
+                console.error('Error al cargar producto:', error);
+            }
+        }
+
+        // Manejar agregar al carrito
+        btnCarrito.addEventListener('click', async () => {
+            const cantidad = parseInt(cantidadInput.value);
+            
+            try {
+                const response = await fetch('http://localhost:8000/carrito/agregar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        producto_id: parseInt(productoId),
+                        cantidad: cantidad
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Error al agregar al carrito');
+                }
+                
+                mensajeElement.textContent = data.mensaje || 'Producto agregado al carrito';
+                mensajeElement.className = 'mensaje exito';
+                
+                // Actualizar stock visualmente
+                const stockActual = parseInt(stockElement.textContent.split(' ')[1]);
+                const nuevoStock = stockActual - cantidad;
+                stockElement.textContent = `Stock: ${nuevoStock} unidades`;
+                
+                if (nuevoStock <= 0) {
+                    stockElement.classList.add('agotado');
+                    btnCarrito.disabled = true;
+                    cantidadInput.disabled = true;
+                }
+                
+            } catch (error) {
+                mensajeElement.textContent = error.message;
+                mensajeElement.className = 'mensaje error';
+                console.error('Error:', error);
+            }
+            
+            setTimeout(() => {
+                mensajeElement.textContent = '';
+            }, 3000);
+        });
+
+        // Cargar producto al iniciar
+        cargarProducto();
+    </script>
+</body>
+</html>
