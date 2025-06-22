@@ -1,0 +1,63 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>64</x><y>112</y><w>168</w><h>112</h></coordinates><panel_attributes>Usuario
+--
+- id: int
+- nombre: String
+- correo: String
+- contraseña: String
+--
++ registrarse(): bool
++ iniciarSesion(): bool
++ recuperarContraseña(): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>256</x><y>296</y><w>232</w><h>112</h></coordinates><panel_attributes>Producto
+--
+- id: int
+- nombre: String
+- descripcion: String
+- precio: float
+- stock: int
+- categoria: Categoria
+--
++ verDetalle(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>120</y><w>168</w><h>80</h></coordinates><panel_attributes>Categoria
+--
+- id: int
+- nombre: String
+--
++ listarProductos(): List&lt;Producto&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>48</x><y>392</y><w>168</w><h>96</h></coordinates><panel_attributes>Carrito
+--
+- id: int
+- productos: List&lt;Producto&gt;
+- total: float
+--
++ agregarProducto(p: Producto): void
++ calcularTotal(): float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>632</x><y>464</y><w>168</w><h>112</h></coordinates><panel_attributes>Pedido
+--
+- id: int
+- usuario: Usuario
+- productos: List&lt;Producto&gt;
+- puntoRetiro: PuntoRetiro
+- estado: String
+--
++ confirmarPedido(): void
++ verEstado(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>592</x><y>312</y><w>224</w><h>80</h></coordinates><panel_attributes>PuntoRetiro
+--
+- id: int
+- direccion: String
+--
++ mostrarDisponibles(): List&lt;PuntoRetiro&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>928</x><y>288</y><w>200</w><h>128</h></coordinates><panel_attributes>RequestHandler
+&lt;&lt;from Python backend&gt;&gt;
+--
+- conn: psycopg2.Connection
+- cursor: psycopg2.Cursor
+--
++ do_POST(): void
++ registrar_usuario(datos): void
++ iniciar_sesion(datos): void
++ responder(status, data): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>368</y><w>40</w><h>24</h></coordinates><panel_attributes>lt=.
+para</panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>464</y><w>168</w><h>80</h></coordinates><panel_attributes>PuntoRetiro
+--
+- id: int
+- direccion: String
+--
++ mostrarDisponibles(): List&lt;PuntoRetiro&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>136</y><w>112</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+&lt;&lt;incluye a&gt;&gt;</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>192</y><w>24</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>808</x><y>328</y><w>136</w><h>32</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;gestionado  por&gt;&gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>328</y><w>128</w><h>32</h></coordinates><panel_attributes>lt=-&gt;&gt;
+&lt;&lt;realizado por &gt;&gt; </panel_attributes><additional_attributes>10;20;137;17</additional_attributes></element><element><id>Relation</id><coordinates><x>488</x><y>488</y><w>160</w><h>32</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;177;17</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>400</y><w>24</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>400</y><w>88</w><h>48</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;40;90;40;90;10</additional_attributes></element></diagram>
