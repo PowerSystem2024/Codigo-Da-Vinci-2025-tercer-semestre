@@ -1,0 +1,65 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  width: 250px;
+    height: 45px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #222;
+}
+
+.mensaje {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.mensaje.success {
+  color: green;
+}
+
+.mensaje.error {
+  color: red;
+}
