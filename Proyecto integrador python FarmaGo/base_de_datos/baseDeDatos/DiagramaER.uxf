@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uxf version="15.0.0">
+  <diagram>
+    <element class="UMLClass" x="50" y="50" width="180" height="140" name="usuarios">
+      <attributes>
+        <attribute>id : SERIAL (PK)</attribute>
+        <attribute>nombre : TEXT NOT NULL</attribute>
+        <attribute>correo : TEXT UNIQUE NOT NULL</attribute>
+        <attribute>contraseña : TEXT NOT NULL</attribute>
+      </attributes>
+      <methods></methods>
+    </element>
+    <element class="UMLClass" x="300" y="50" width="220" height="180" name="productos">
+      <attributes>
+        <attribute>id : SERIAL (PK)</attribute>
+        <attribute>nombre : TEXT NOT NULL</attribute>
+        <attribute>precio : DECIMAL(10,2) NOT NULL</attribute>
+        <attribute>categoria : TEXT NOT NULL</attribute>
+        <attribute>descripcion : TEXT</attribute>
+        <attribute>usuario_id : INTEGER (FK usuarios.id)</attribute>
+      </attributes>
+      <methods></methods>
+    </element>
+    <element class="UMLAssociation" x="220" y="160" width="20" height="20" name="">
+      <connections>
+        <connection element="usuarios" cardinality="1" />
+        <connection element="productos" cardinality="*" />
+      </connections>
+      <attributes>
+        <attribute>1 - N</attribute>
+      </attributes>
+    </element>
+  </diagram>
+</uxf>
+

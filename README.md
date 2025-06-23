@@ -24,4 +24,6 @@ Nuestra startup es una red de cadenas de farmacias que integra una plataforma di
 
 ![Logo](./Proyecto%20integrador%20python%20FarmaGo/img/logoFarmaGo.png)
 
+# Nuestro diagrama UML
 
+![uml](./Proyecto%20integrador%20python%20FarmaGo/img/uml.png)
