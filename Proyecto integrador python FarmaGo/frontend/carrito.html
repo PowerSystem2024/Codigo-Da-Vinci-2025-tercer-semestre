@@ -337,6 +337,85 @@
             color: #666;
         }
         
+        /* Sección de retiro en sucursal */
+        .pickup-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .pickup-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pickup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .pickup-filter {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .pickup-filter input, .pickup-filter select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .pickup-filter input {
+            flex-grow: 1;
+        }
+        
+        .pickup-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .pickup-item {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .pickup-item-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .pickup-item-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .pickup-item-stock {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .pickup-item-stock .in-stock {
+            font-weight: bold;
+        }
+        
+        .loading-pickups {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark-color);
@@ -410,6 +489,10 @@
             .product-images {
                 border-right: none;
                 border-bottom: 1px solid #eee;
+            }
+            
+            .pickup-filter {
+                flex-direction: column;
             }
         }
     </style>
@@ -518,6 +601,26 @@
                 </div>
             </div>
         </div>
+        
+        <section class="pickup-section">
+            <h2><i class="fas fa-store"></i> Retiro en sucursal</h2>
+            <div class="pickup-options">
+                <div class="pickup-filter">
+                    <input type="text" id="pickup-search" placeholder="Buscar sucursal...">
+                    <select id="pickup-filter">
+                        <option value="all">Todas las sucursales</option>
+                        <option value="near">Más cercanas</option>
+                        <option value="stock">Con stock disponible</option>
+                    </select>
+                </div>
+                
+                <div class="pickup-list" id="pickup-list">
+                    <div class="loading-pickups">
+                        <i class="fas fa-spinner fa-spin"></i> Cargando puntos de retiro...
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer>
@@ -585,6 +688,9 @@
         const productCategoryElement = document.getElementById('product-category');
         const productPresentationElement = document.getElementById('product-presentation');
         const cartCounterElement = document.getElementById('contador-carrito');
+        const pickupListElement = document.getElementById('pickup-list');
+        const pickupSearchElement = document.getElementById('pickup-search');
+        const pickupFilterElement = document.getElementById('pickup-filter');
 
         // Cargar datos del producto
         async function cargarProducto() {
@@ -619,10 +725,77 @@
                 productCategoryElement.textContent = producto.categoria || 'Sin categoría';
                 productPresentationElement.textContent = producto.presentacion || 'No especificado';
                 
+                // Cargar sucursales para este producto
+                cargarSucursales(productoId);
+                
             } catch (error) {
                 mostrarNotificacion(`Error: ${error.message}`, 'error');
                 console.error('Error al cargar producto:', error);
             }
+        }
+
+        // Cargar sucursales con stock del producto
+        async function cargarSucursales(productoId) {
+            try {
+                const response = await fetch(`http://localhost:8000/sucursales?producto_id=${productoId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Error al cargar sucursales');
+                }
+                
+                const sucursales = await response.json();
+                mostrarSucursales(sucursales);
+                
+            } catch (error) {
+                pickupListElement.innerHTML = `<div class="error-notification">Error al cargar sucursales: ${error.message}</div>`;
+                console.error('Error al cargar sucursales:', error);
+            }
+        }
+
+        // Mostrar lista de sucursales
+        function mostrarSucursales(sucursales) {
+            if (sucursales.length === 0) {
+                pickupListElement.innerHTML = '<div class="no-results">No hay sucursales disponibles para este producto</div>';
+                return;
+            }
+            
+            let html = '';
+            sucursales.forEach(sucursal => {
+                html += `
+                    <div class="pickup-item">
+                        <div class="pickup-item-info">
+                            <h3>${sucursal.nombre}</h3>
+                            <p>${sucursal.direccion} - ${sucursal.localidad}</p>
+                            <p><small>Horario: ${sucursal.horario_apertura} a ${sucursal.horario_cierre}</small></p>
+                        </div>
+                        <div class="pickup-item-stock">
+                            <span class="${sucursal.stock > 0 ? 'in-stock' : 'out-of-stock'}">
+                                ${sucursal.stock > 0 ? `Stock: ${sucursal.stock}` : 'Sin stock'}
+                            </span>
+                            <button class="select-pickup-btn" data-id="${sucursal.id}">
+                                <i class="fas fa-check"></i> Seleccionar
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            pickupListElement.innerHTML = html;
+            
+            // Configurar eventos para los botones de selección
+            document.querySelectorAll('.select-pickup-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sucursalId = this.getAttribute('data-id');
+                    seleccionarSucursal(sucursalId);
+                });
+            });
+        }
+
+        // Seleccionar sucursal para retiro
+        function seleccionarSucursal(sucursalId) {
+            // Aquí iría la lógica para guardar la selección
+            mostrarNotificacion(`Sucursal seleccionada para retiro`, 'success');
+            console.log(`Sucursal seleccionada: ${sucursalId}`);
         }
 
         // Actualizar información de stock
@@ -670,6 +843,9 @@
                 const nuevoStock = stockActual - cantidad;
                 actualizarStockInfo(nuevoStock);
                 
+                // Volver a cargar sucursales para actualizar stock
+                cargarSucursales(productoId);
+                
             } catch (error) {
                 mostrarNotificacion(error.message, 'error');
                 console.error('Error:', error);
@@ -711,6 +887,27 @@
                 thumb.addEventListener('click', () => {
                     imageElement.src = thumb.src.replace('100', '500');
                 });
+            });
+            
+            // Configurar búsqueda de sucursales
+            pickupSearchElement.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const items = document.querySelectorAll('.pickup-item');
+                
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Configurar filtro de sucursales
+            pickupFilterElement.addEventListener('change', function() {
+                // Aquí iría la lógica para filtrar sucursales
+                console.log(`Filtro seleccionado: ${this.value}`);
             });
         });
     </script>
