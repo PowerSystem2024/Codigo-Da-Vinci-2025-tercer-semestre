@@ -204,3 +204,112 @@ body {
         gap: 10px;
     }
 }
+
+/* Estilos para la sección de puntos de retiro */
+.pickup-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.pickup-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pickup-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pickup-filter input, .pickup-filter select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.pickup-filter input {
+    flex-grow: 1;
+}
+
+.pickup-list {
+    display: grid;
+    gap: 15px;
+}
+
+.pickup-item {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pickup-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,166,80,0.1);
+}
+
+.pickup-item.selected {
+    border: 2px solid var(--primary-color);
+    background-color: #f0fdf4;
+}
+
+.pickup-item h3 {
+    color: var(--dark-color);
+    margin-bottom: 8px;
+}
+
+.pickup-address {
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.pickup-schedule {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.pickup-stock {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.stock-available {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.stock-low {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.stock-none {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.loading-pickups {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .pickup-filter {
+        flex-direction: column;
+    }
+}

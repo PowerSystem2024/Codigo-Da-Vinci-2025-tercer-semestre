@@ -25,11 +25,8 @@ conn.commit()
 
 class RequestHandler(BaseHTTPRequestHandler):
     
-    
-
     def _set_headers(self, status=200):
         self.send_response(status)
-        # Cabeceras CORS
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-Type', 'application/json')
         self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
@@ -37,7 +34,6 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_OPTIONS(self):
-        # Respuesta a preflight CORS
         self._set_headers()
 
     def do_POST(self):
@@ -50,6 +46,12 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.registrar_usuario(datos)
             elif self.path == '/login':
                 self.iniciar_sesion(datos)
+            elif self.path == '/mis-pedidos':
+                usuario_id = datos.get('usuario_id')
+                if usuario_id:
+                    self.ver_pedidos(usuario_id)
+                else:
+                    self.responder(400, {'message': 'Falta el ID de usuario'})
             else:
                 self.responder(404, {'message': 'Ruta no encontrada'})
         except json.JSONDecodeError:
@@ -88,37 +90,35 @@ class RequestHandler(BaseHTTPRequestHandler):
         else:
             self.responder(401, {'message': 'Correo o contraseña incorrectos'})
 
+    def ver_pedidos(self, usuario_id):
+        try:
+            cursor.execute("""
+                SELECT fecha, punto_retiro, productos, estado
+                FROM pedidos
+                WHERE usuario_id = %s
+                ORDER BY fecha DESC
+            """, (usuario_id,))
+            resultados = cursor.fetchall()
+
+            pedidos = [
+                {
+                    'fecha': str(row[0]),
+                    'punto_retiro': row[1],
+                    'productos': row[2],
+                    'estado': row[3]
+                }
+                for row in resultados
+            ]
+            self.responder(200, {'pedidos': pedidos})
+
+        except Exception as e:
+            self.responder(500, {'message': f'Error al obtener pedidos: {str(e)}'})
+
     def responder(self, status, data):
         self._set_headers(status)
         self.wfile.write(json.dumps(data).encode())
-        
-    def ver_pedidos(self, usuario_id):
-    try:
-        cursor.execute("""
-            SELECT fecha, punto_retiro, productos, estado
-            FROM pedidos
-            WHERE usuario_id = %s
-            ORDER BY fecha DESC
-        """, (usuario_id,))
-        resultados = cursor.fetchall()
-
-        pedidos = [
-            {
-                'fecha': str(row[0]),
-                'punto_retiro': row[1],
-                'productos': row[2],
-                'estado': row[3]
-            }
-            for row in resultados
-        ]
-        self.responder(200, {'pedidos': pedidos})
-    except Exception as e:
-        self.responder(500, {'message': f'Error al obtener pedidos: {str(e)}'})
-
 
 if __name__ == '__main__':
     servidor = HTTPServer(('0.0.0.0', 8000), RequestHandler)
     print('Servidor activo en http://localhost:8000')
     servidor.serve_forever()
-
-
