@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historial de Pedidos | Gestor de Gastos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f2f5;
+      background-image: linear-gradient(120deg, #dfe6e9 0%, #ffffff 100%);
+      color: #2d3436;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2d3436;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pedido {
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .pedido:hover {
+      transform: scale(1.01);
+    }
+
+    .pedido .fecha {
+      font-size: 14px;
+      color: #636e72;
+    }
+
+    .pedido .productos {
+      margin-top: 10px;
+      font-weight: 500;
+      color: #2d3436;
+    }
+
+    .punto {
+      margin-top: 5px;
+      font-size: 15px;
+      color: #636e72;
+    }
+
+    .estado {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .estado.entregado {
+      background-color: #dff9fb;
+      color: #27ae60;
+      border: 1px solid #27ae60;
+    }
+
+    .estado.pendiente {
+      background-color: #fff6e0;
+      color: #e67e22;
+      border: 1px solid #e67e22;
+    }
+
+    .estado.en-camino {
+      background-color: #dfe6fd;
+      color: #2980b9;
+      border: 1px solid #2980b9;
+    }
+
+    .no-pedidos {
+      text-align: center;
+      color: #636e72;
+      margin-top: 50px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🧾 Historial de Pedidos</h2>
+    <div id="resultados"></div>
+  </div>
+
+  <script>
+    async function obtenerPedidos() {
+      const res = await fetch('http://localhost:8000/mis-pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usuario_id: 1 }) // Reemplazar si usás sesiones
+      });
+
+      const data = await res.json();
+      const div = document.getElementById('resultados');
+
+      if (data.pedidos && data.pedidos.length > 0) {
+        data.pedidos.forEach(p => {
+          let estadoClass = '';
+          if (p.estado.toLowerCase().includes("pendiente")) estadoClass = 'pendiente';
+          else if (p.estado.toLowerCase().includes("entregado")) estadoClass = 'entregado';
+          else if (p.estado.toLowerCase().includes("camino")) estadoClass = 'en-camino';
+
+          div.innerHTML += `
+            <div class="pedido">
+              <div class="fecha">📅 ${p.fecha}</div>
+              <div class="productos">🛍️ ${p.productos}</div>
+              <div class="punto">📍 Retiro: ${p.punto_retiro}</div>
+              <div class="estado ${estadoClass}">${p.estado}</div>
+            </div>
+          `;
+        });
+      } else {
+        div.innerHTML = `<p class="no-pedidos">No tenés pedidos aún.</p>`;
+      }
+    }
+
+    obtenerPedidos();
+  </script>
+</body>
+</html>
