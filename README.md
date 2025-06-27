@@ -16,7 +16,7 @@ Integrantes del grupo :**
   [GitHub - Valentin- Felipe ](https://github.com/Valentin-Felipe)  
   [![Valentin Felipe - Código Da Vinci ](https://img.shields.io/badge/Código%20Da%20Vinci-Valentin%20Felipe-blueyellow?logo=github)](https://github.com/Valentin-Felipe)
 
-- **Reynoso, Lucas (legajo : xxxxx)**  
+- **Reynoso, Lucas (legajo : 11949)**  
   [GitHub - Reynoso- Lucas ](https://github.com/LucasReynoso4)
   
   [![Reynoso Lucas - Código Da Vinci](https://img.shields.io/badge/Código%20Da%20Vinci-Lucas%20Reynoso-blueyellow?logo=github)](https://github.com/LucasReynoso4)
