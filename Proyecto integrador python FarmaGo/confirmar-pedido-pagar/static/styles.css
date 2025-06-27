@@ -1,0 +1,127 @@
+
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* centra verticalmente en PC */
+    padding-bottom: 70px; /* espacio para navbar */
+}
+
+/* Contenedor principal */
+.container {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 25px 20px;
+    margin-top: 20px;
+}
+
+/* Títulos */
+h2, h3 {
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Select e inputs */
+select, input[type="text"], input[type="number"], input[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1.8px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #0aad64;
+}
+
+input[type="submit"] {
+    background-color: #0aad64;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #089554;
+}
+
+/* Secciones de medios de pago */
+.medios-pago {
+    margin-bottom: 15px;
+}
+
+#opciones_tarjeta, #opciones_mercado_pago, #opciones_efectivo {
+    margin-top: 10px;
+}
+
+#opciones_efectivo img {
+    display: block;
+    margin: 10px auto;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Navbar responsiva */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* full width */
+    background-color: #0aad64;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Mensaje de éxito */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 420px) {
+    .container {
+        width: 95%;
+        margin-top: 10px;
+    }
+}
