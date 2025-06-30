@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmar Pedido</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h2>Confirmar tu pedido</h2>
+
+    <form action="{{ url_for('confirmar_pedido') }}" method="POST">
+      <!-- Campos ocultos -->
+      <input type="hidden" name="productos" value="Ibuprofeno 600mg x2, Paracetamol x1" />
+      <input type="hidden" name="total" value="{{ pedido.total }}" />
+
+      <section class="medios-pago">
+        <h3>Medio de pago:</h3>
+        <select name="metodo_pago" id="metodo_pago" onchange="mostrarOpciones()" required>
+          <option value="">Seleccioná una opción</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="mercado_pago">Mercado Pago</option>
+          <option value="efectivo">Efectivo</option>
+        </select>
+
+        <div id="opciones_tarjeta" style="display: none;">
+          <input type="text" placeholder="Número de tarjeta" name="numero_tarjeta" /><br />
+          <input type="text" placeholder="Vencimiento (MM/AA)" name="vencimiento" /><br />
+          <input type="text" placeholder="Código de seguridad" name="cvv" />
+        </div>
+
+        <div id="opciones_mercado_pago" style="display: none;">
+          <a href="https://www.mercadopago.com.ar" target="_blank">Ir a Mercado Pago</a>
+        </div>
+
+        <div id="opciones_efectivo" style="display: none;">
+          <img src="{{ url_for('static', filename='codigo_barras.png') }}" alt="Código de barras para Pago Fácil" width="200" />
+          <p>Mostrá este código en Pago Fácil para pagar tu compra.</p>
+        </div>
+      </section>
+
+      <input type="submit" value="Confirmar Pedido" />
+    </form>
+  </div>
+
+  <!-- Navbar inferior -->
+  <div class="navbar">
+    <a href="#"><span>🏠</span>Inicio</a>
+    <a href="#"><span>🛒</span>Carrito</a>
+    <a href="#"><span>❤️</span>Favoritos</a>
+    <a href="#"><span>👤</span>Cuenta</a>
+  </div>
+
+  <script>
+    function mostrarOpciones() {
+      let metodo = document.getElementById("metodo_pago").value;
+      document.getElementById("opciones_tarjeta").style.display = metodo === "tarjeta" ? "block" : "none";
+      document.getElementById("opciones_mercado_pago").style.display = metodo === "mercado_pago" ? "block" : "none";
+      document.getElementById("opciones_efectivo").style.display = metodo === "efectivo" ? "block" : "none";
+
+      // Agregar o quitar required a inputs según método
+      const inputsTarjeta = document.querySelectorAll('#opciones_tarjeta input');
+      inputsTarjeta.forEach(input => input.required = (metodo === "tarjeta"));
+    }
+  </script>
+</body>
+</html>
