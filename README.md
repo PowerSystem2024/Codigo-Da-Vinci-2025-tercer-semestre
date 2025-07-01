@@ -13,6 +13,9 @@ Este repositorio contiene los proyectos y las tareas de la tecnicatura en progra
 
 # Proyecto Integrador - Python
 
+[Enlace al video proyecto final python 2025](https://drive.google.com/file/d/1x9rZnYbPtfl4gxPsnF-FchG_lX94Ys1G/view?usp=sharing)
+
+
 ## Consigna
 
 El proyecto integrador consiste en desarrollar una aplicación en Python que utilice las herramientas aprendidas durante el curso. Este proyecto debe cumplir con los siguientes requisitos:
