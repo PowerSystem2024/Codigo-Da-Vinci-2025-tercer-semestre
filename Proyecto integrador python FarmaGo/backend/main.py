@@ -256,3 +256,4 @@ def ver_producto(id: int, db: Depends(get_db)):
         id=row[0], nombre=row[1], precio=row[2],
         stock=row[3], descripcion=row[4], imagen_url=row[5]
     )
+

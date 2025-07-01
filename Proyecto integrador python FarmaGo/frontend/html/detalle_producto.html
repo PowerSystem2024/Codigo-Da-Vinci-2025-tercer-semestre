@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ producto.nombre }} - Detalle</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+</head>
+<body>
+  <div class="detalle-container">
+    <h1>{{ producto.nombre }}</h1>
+    {% if producto.imagen_url %}
+      <img src="{{ producto.imagen_url }}" alt="{{ producto.nombre }}">
+    {% endif %}
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Stock disponible:</strong> {{ producto.stock }}</p>
+    <button onclick="agregarAlCarrito({{ producto.id }})">Agregar al carrito</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='detalle.js') }}"></script>
+</body>
+</html>

@@ -16,6 +16,23 @@ CREATE TABLE IF NOT EXISTS productos (
     usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS puntos_retiro (
+    id SERIAL PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    direccion TEXT NOT NULL,
+    ciudad TEXT,
+    provincia TEXT,
+    activo BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE IF NOT EXISTS pedidos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER,
+    productos TEXT,
+    total REAL,
+    metodo_pago TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
 -- Usuarios de prueba
 INSERT INTO usuarios (nombre, correo, contraseña) VALUES
 ('Juan Pérez', 'juan@example.com', '1234'),
