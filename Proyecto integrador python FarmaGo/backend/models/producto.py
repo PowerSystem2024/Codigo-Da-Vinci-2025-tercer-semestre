@@ -19,4 +19,7 @@ def get_productos_dict():
     productos = cursor.fetchall()
     conn.close()
 
-    return {id: {'nombre': nombre, 'precio': precio} for i
+    return {
+        id: {'nombre': nombre, 'precio': precio} 
+        for id, nombre, precio in productos
+    }
